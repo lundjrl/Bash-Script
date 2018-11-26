@@ -1,0 +1,29 @@
+unzip -d
+^^unzip the file into another directory
+
+//Bash stuff for script
+
+ls data > temp
+while read line
+do #line
+...
+done < temp
+
+
+
+#process $line
+  redefine IFS
+  set $line
+  username=$2
+  filename=$5
+  restore IFS
+ 
+mv  ____  ____
+$line	  //original filename
+$filename //actual filename Ex: cipher.c
+//Place file under the users file directory
+ 
+last file doesn't have a name so $5 will be empty :)
+
+ls -R proj3-2/
+-R is recursive
