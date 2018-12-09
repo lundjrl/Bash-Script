@@ -1,18 +1,27 @@
-#!/bin/bash
-
-echo "# This script is used to quickly backup your files	#"
-echo "# and directories! :D					#"
-echo "#							#"
-echo "# Please use format "./backup.sh source/file backup/file "#"
-echo "#							#"
-echo "#							#"
-echo "							 "
+#/bin/bash
 
 dest=$backupDir
 target=$sourceDir
 
 file=$1
 file2=$2
+
+silence=false
+count=false
+help=false
+
+for var in "$@"
+do
+    if [ "$var" == -s ];
+	then
+        silence=true
+    elif [ "$var" == -c ]; 
+	then
+	count=true
+    elif [ "$var" == --help ]; 
+	then
+	help=true
+
 
 DIFF=$(diff "$1" "$2")
 
@@ -42,4 +51,26 @@ if [ ! -d "$dest" ]; then
     fi
 fi
 
-exit
+if [ "$silence" == true ]; then
+    echo "All files in backup.."
+    ls backupDir
+fi
+
+if [ "$count" == true ]; then
+    echo "Amount of files in backup $count"
+    ls backup | wc -l
+
+if [ "$help" == true ]; then
+    echo "# This script is used to backup your files                    #"
+    echo "# and directories! :D                                         #"
+    echo "#                                                             #"
+    echo "# Please use format "./backup.sh source/file backup/file      #"
+    echo "#                                				#"
+    echo "# -s Depresses the message reporting a file that is not copied#"
+    echo "# 							        #"
+    echo "# -c Counts and displays the number of files that are copied  #"
+    echo "#    and the number of files that are not copied.             #"
+    echo "#								#"
+    echo "# --help Displays this message pane, of course :)             #"
+    echo "								 "
+fi
