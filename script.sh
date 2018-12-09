@@ -11,5 +11,6 @@ do
     username=$2
     filename=$5
     restore IFS
+    cut -d -f1 
 mv $5 $2
 done < temp    
