@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "# This script is used to quickly backup your files	#"
+echo "# and directories! :D					#"
+echo "#							#"
+echo "# Please use format "./backup.sh source/file backup/file "#"
+echo "#							#"
+echo "#							#"
+echo "							 "
+
 dest=$backupDir
 target=$sourceDir
 
@@ -21,14 +29,14 @@ if [ ! -d "$dest" ]; then
     else 
 	#If the file does not exist
 	"File does not exist, please select new file"
-	cp -v $1 $dest
+	cp -R $1 $dest
     fi
 
     if [ "$DIFF" != "" ];
     then
 	#Comparing two files if they are not the same.  
 	echo "File is not recent copy, copying to dir"
-	cp -v $1 $dest
+	cp -R $1 $dest
     else
 	echo "File is up to date :)"
     fi
